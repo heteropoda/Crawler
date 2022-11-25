@@ -8,7 +8,7 @@ import time
 import scrapy
 from scrapy.http.request import Request
 
-from common import TWITTER_TOKEN_URL, TWITTER_DEFAULT_HEADER
+from common import TWITTER_DEFAULT_HEADER
 
 
 class BaseSpider(scrapy.Spider):
@@ -17,6 +17,7 @@ class BaseSpider(scrapy.Spider):
 
 class TwitterBaseSpider(BaseSpider):
 
+    twitter_token = ''
     custom_settings = {
         "DEFAULT_REQUEST_HEADERS": TWITTER_DEFAULT_HEADER,
         "DOWNLOADER_MIDDLEWARES": {
@@ -25,8 +26,9 @@ class TwitterBaseSpider(BaseSpider):
     }
     
     def start_requests(self, **kwargs):
-        yield self.get_token()
+        pass
         
     def parse_token(self, response):
-        self.token = json.loads(response.text)['guest_token']
+        self.twitter_token = json.loads(response.text)['guest_token']
+        self.logger.info('token更新成功')
         yield response.meta['next_request']
