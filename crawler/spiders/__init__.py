@@ -8,27 +8,26 @@ import time
 import scrapy
 from scrapy.http.request import Request
 
-from common import TWITTER_DEFAULT_HEADER
-
 
 class BaseSpider(scrapy.Spider):
-    pass
+    
+    def log(self, level='DEBUG', sign='NONE', message='send a message...'):
+        msg = '<{}> {}'
+        if level == 'INFO':
+            self.logger.info(msg.format(sign, message))
+        elif level == 'WARNING' or level == 'WARN':
+            self.logger.warning(msg.format(sign, message))
+        elif level == 'ERROR':
+            self.logger.warning(msg.format(sign, message))
+        else:
+            self.logger.debug(msg.format(sign, message))
 
 
 class TwitterBaseSpider(BaseSpider):
-
-    twitter_token = ''
-    custom_settings = {
-        "DEFAULT_REQUEST_HEADERS": TWITTER_DEFAULT_HEADER,
-        "DOWNLOADER_MIDDLEWARES": {
-            'crawler.downloadermiddlewares.twitter.TwitterDownloaderMiddleware': 543,
-        }
-    }
     
-    def start_requests(self, **kwargs):
-        pass
+    twitter_token = ''
         
     def parse_token(self, response):
         self.twitter_token = json.loads(response.text)['guest_token']
-        self.logger.info('token更新成功')
+        self.log('INFO', 'MESSAGE', 'token更新成功')
         yield response.meta['next_request']

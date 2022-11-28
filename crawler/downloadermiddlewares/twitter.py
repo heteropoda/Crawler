@@ -6,7 +6,7 @@
 import time
 from scrapy import Request, signals
 
-from common import TWITTER_TOKEN_URL
+from common.twitter import TWITTER_TOKEN_URL
 
 
 class TwitterDownloaderMiddleware:
