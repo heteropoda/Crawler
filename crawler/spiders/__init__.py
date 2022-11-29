@@ -8,6 +8,8 @@ import time
 import scrapy
 from scrapy.http.request import Request
 
+from common.twitter import TWITTER_DEFAULT_HEADER
+
 
 class BaseSpider(scrapy.Spider):
     
@@ -24,6 +26,13 @@ class BaseSpider(scrapy.Spider):
 
 
 class TwitterBaseSpider(BaseSpider):
+    
+    custom_settings = {
+        "DEFAULT_REQUEST_HEADERS": TWITTER_DEFAULT_HEADER,
+        "DOWNLOADER_MIDDLEWARES": {
+            'crawler.downloadermiddlewares.twitter.TwitterDownloaderMiddleware': 543,
+        }
+    }
     
     twitter_token = ''
         

@@ -7,15 +7,13 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-from tool.dir import check_dir_create
-
 
 BOT_NAME = 'crawler'
 
 SPIDER_MODULES = ['crawler.spiders']
 NEWSPIDER_MODULE = 'crawler.spiders'
 
-check_dir_create('log')
+
 LOG_LEVEL = 'INFO'
 LOG_FILE = 'log/default_log.txt'
 
@@ -50,9 +48,9 @@ DOWNLOAD_DELAY = 0.2
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'Crawler.middlewares.CrawlerSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware': None
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html

@@ -7,15 +7,13 @@ from scrapy.http.request import Request
 
 from common.twitter import *
 from crawler.spiders import TwitterBaseSpider
-from tool.settings import get_custom_settings
 
 
 class TwitterAdvancedSpider(TwitterBaseSpider):
     name = 'twitter_advanced'
-    custom_settings = get_custom_settings('twitter_advanced')
 
-    def start_requests(self, **kwargs):
-        q = "(from:elonmusk) since:2022-11-27"
+    def start_requests(self):
+        q = self.settings['TASK_SETTINGS']['q']
         yield Request(TWITTER_ADVANCED_URL.format(parse.quote(q),''), meta={'q': q})
 
 
