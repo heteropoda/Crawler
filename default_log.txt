@@ -1,9 +1,0 @@
-2022-11-28 11:59:20 [scrapy.utils.log] INFO: Scrapy 2.7.1 started (bot: crawler)
-2022-11-28 11:59:20 [scrapy.utils.log] INFO: Versions: lxml 4.9.1.0, libxml2 2.9.12, cssselect 1.2.0, parsel 1.7.0, w3lib 2.0.1, Twisted 22.10.0, Python 3.10.7 (tags/v3.10.7:6cc6b13, Sep  5 2022, 14:08:36) [MSC v.1933 64 bit (AMD64)], pyOpenSSL 22.1.0 (OpenSSL 3.0.7 1 Nov 2022), cryptography 38.0.3, Platform Windows-10-10.0.19044-SP0
-2022-11-28 11:59:20 [scrapy.crawler] INFO: Overridden settings:
-{'BOT_NAME': 'crawler',
- 'DOWNLOAD_DELAY': 0.2,
- 'LOG_FILE': 'log/twitter_advanced.txt',
- 'LOG_LEVEL': 'INFO',
- 'NEWSPIDER_MODULE': 'crawler.spiders',
- 'SPIDER_MODULES': ['crawler.spiders']}
