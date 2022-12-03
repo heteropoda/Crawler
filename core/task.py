@@ -21,7 +21,7 @@ class Task(dict):
             settings['ITEM_PIPELINES'] = {'crawler.pipelines.local.LocalPipeline': 300}
         # 日志设置
         settings['LOG_FILE'] = f'log/{self["name"]}.txt'
-        check_dir_create(settings['LOG_FILE'])
+        check_dir_create('log')
         
         start(self['spider'], settings)
         
