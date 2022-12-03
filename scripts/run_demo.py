@@ -12,6 +12,6 @@ if __name__ == "__main__":
         'out_type': 'local',
         'out_path': 'out',
         'page_limit': 0,
-        'q': '(from:elonmusk) since:2022-11-27'
+        'q': '(from:elonmusk) since:2022-01-01'
     })
     task.run()
