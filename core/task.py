@@ -19,6 +19,8 @@ class Task(dict):
         # 输出设置
         if self.get('out_type') == 'local':
             settings['ITEM_PIPELINES'] = {'crawler.pipelines.local.LocalPipeline': 300}
+        elif self.get('out_type') == 'hdfs':
+            settings['ITEM_PIPELINES'] = {'crawler.pipelines.hdfs.HDFSPipeline': 300}
         # 日志设置
         settings['LOG_FILE'] = f'log/{self["name"]}.txt'
         check_dir_create('log')
@@ -30,12 +32,4 @@ class Task(dict):
         sched.add_job(self.run, 'cron', day='*', values=(settings,))
         sched.start()
     
-    
-    
-if __name__ == "__main__":
-    task = Task({'name':'demo_task', 'spider':'twitter_advanced'})
-    task['q'] = "(from:elonmusk) since:2022-11-27"
-    task['out_type'] = 'local'
-    task['out_path'] = 'out'
-    task.run()
     

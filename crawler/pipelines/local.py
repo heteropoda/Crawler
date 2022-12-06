@@ -1,6 +1,5 @@
 
 import time
-from itemadapter import ItemAdapter
 
 from tool.dir import check_dir_create
 

@@ -133,3 +133,4 @@ dmypy.json
 .idea/
 out/
 log/
+*test.py

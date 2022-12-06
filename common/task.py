@@ -6,5 +6,8 @@ DEFAULT_TASK = {
     'corn': '',
     'out_type': '',
     'out_path': '',
-    'page_limit': 0
+    'page_limit': 0,
+    
+    # 'hdfs_host': 'http://localhost:9870'
+    # 'q': '',
 }
