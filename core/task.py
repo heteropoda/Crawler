@@ -13,8 +13,9 @@ class Task(dict):
     
     def __init__(self, dic: dict) -> None:
         self.update(dic)
-    
-    def run(self, settings={}):
+        
+    def process(self):
+        settings = {}
         settings['TASK_SETTINGS'] = self
         # 输出设置
         if self.get('out_type') == 'local':
@@ -26,10 +27,12 @@ class Task(dict):
         check_dir_create('log')
         
         start(self['spider'], settings)
-        
-    def run_scheduler(self, settings={}):
-        sched = BlockingScheduler()
-        sched.add_job(self.run, 'cron', day='*', values=(settings,))
-        sched.start()
     
+    def run(self):
+        self.process()
+        
+    # def run_scheduler(self, settings={}):
+    #     sched = BlockingScheduler()
+    #     sched.add_job(self.run, 'cron', day='*', values=(settings,))
+    #     sched.start()
     

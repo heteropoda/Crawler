@@ -1,5 +1,4 @@
 
-from common.task import DEFAULT_TASK
 from core.task import Task
 
 
@@ -12,6 +11,7 @@ if __name__ == "__main__":
         'out_type': 'local',
         'out_path': 'out',
         'page_limit': 0,
-        'q': '(from:elonmusk) since:2022-01-01'
+        # 'hdfs_host': 'http://192.168.202.128:9870',
+        'q': '(from:elonmusk) since:2022-01-01',
     })
     task.run()
