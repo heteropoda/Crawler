@@ -1,6 +1,7 @@
 
 import copy
 from apscheduler.schedulers.blocking import BlockingScheduler
+from multiprocessing.context import Process
 
 from core.start import start
 from tool.dir import check_dir_create
@@ -26,7 +27,9 @@ class Task(dict):
         settings['LOG_FILE'] = f'log/{self["name"]}.txt'
         check_dir_create('log')
         
-        start(self['spider'], settings)
+        process = Process(target=start, args=(self['spider'], settings))
+        process.start()
+        process.join()
     
     def run(self):
         self.process()
