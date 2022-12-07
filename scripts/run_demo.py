@@ -12,6 +12,6 @@ if __name__ == "__main__":
         'out_path': 'out',
         'page_limit': 0,
         # 'hdfs_host': 'http://192.168.202.128:9870',
-        'q': '(from:elonmusk) since:2022-01-01',
+        'q': '(from:elonmusk) until:2022-12-02 since:2022-12-01',
     })
     task.run()
